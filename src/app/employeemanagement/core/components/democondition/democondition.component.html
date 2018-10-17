@@ -1,0 +1,42 @@
+<amexio-card [footer]="true" [header]="true" [show]="true" [header-align]="'left'" [footer-align]="'right'">
+    <amexio-header>
+        Demo Condition
+    </amexio-header>
+    <amexio-body>
+        <amexio-row>
+            <amexio-column size="4">
+                <amexio-dropdown [(ngModel)]="demomodel.year" name="demomodel.year" [search]="true" [field-label]="'Year'" [data]="year_Data" [display-field]="'year'" [value-field]="'year'">
+                </amexio-dropdown>
+            </amexio-column>
+            <amexio-column size="5">
+                <amexio-radio-group [field-label]="'Gender'" [(ngModel)]="demomodel.gender" name="demomodel.gender" [display-field]="'genderName'" [value-field]="'genderId'" [data]="gender_Data" [horizontal]="true">
+                </amexio-radio-group>
+            </amexio-column>
+            <amexio-column size="3">
+                <amexio-button [label]="'Show Year Wise Data'" [type]="'default'" [tooltip]="'button'" [size]="'default'" [form-bind]="'showData'" (onClick)="onClick_showData($event)">
+                </amexio-button>
+            </amexio-column>
+        </amexio-row>
+
+        <amexio-datagrid [title]="'Gender Wise Data'" [page-size]="10" [data]="gridData_Data" [enable-column-fiter]="true">
+            <amexio-data-table-column [text]="'States'" [data-index]="'stateName'" [data-type]="'string'">
+            </amexio-data-table-column>
+            <amexio-data-table-column [text]="'Birth Count'" [data-index]="'birthCount'" [data-type]="'string'">
+            </amexio-data-table-column>
+        </amexio-datagrid>
+
+    </amexio-body>
+
+    <amexio-action>
+
+    </amexio-action>
+</amexio-card>
+<amexio-notification [data]="successMsgData" [vertical-position]="'top'" [horizontal-position]="'right'" [close-on-escape]="true" [background-color]="'green'" [auto-dismiss-msg]="true" [auto-dismiss-msg-interval]="4000">
+    <ng-template #amexioNotificationTemplates let-row="row">
+        <amexio-box>
+            <amexio-image [icon-class]="'fa fa-check'">
+            </amexio-image> &nbsp;&nbsp;
+            <amexio-label size="small-bold" font-color="black">{{row}}</amexio-label>
+        </amexio-box>
+    </ng-template>
+</amexio-notification>
