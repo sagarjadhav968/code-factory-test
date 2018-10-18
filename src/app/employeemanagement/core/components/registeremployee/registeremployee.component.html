@@ -49,8 +49,7 @@
 
         <amexio-row>
             <amexio-column size="6">
-                <amexio-dropdown [(ngModel)]="employee.countryId" name="employee.countryId" [search]="true" [field-label]="'Country'" [http-url]="'https://uat.amexio.org:8991/rest-sample-app/api/country/findall'" [http-method]="'get'" [display-field]="'countryName'"
-                    [value-field]="'id'" (onSingleSelect)="onSingleSelect_country($event)">
+                <amexio-dropdown [(ngModel)]="employee.countryId" name="employee.countryId" [search]="true" [field-label]="'Country'" [http-url]="http.COUNTRY_SERVICE" [http-method]="'get'" [display-field]="'countryName'" [value-field]="'id'" (onSingleSelect)="onSingleSelect_country($event)">
                 </amexio-dropdown>
             </amexio-column>
             <amexio-column size="6">

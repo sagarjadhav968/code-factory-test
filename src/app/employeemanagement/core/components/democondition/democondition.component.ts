@@ -1,7 +1,7 @@
 /**
  * Created by: Ketan Gote
  * Date: 17/10/2018
- * Organization: Individual	
+ * Organization: Individual
  */
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class DemoconditionComponent implements OnInit
 	gender_Data:any;
 	gridData_Data:any;
 	successMsgData:any[]=[];
-	
+
 	constructor(private statisticsService: StatisticsService, private router: Router)
 	{
 		this.demomodel = new Demomodel();
@@ -32,11 +32,11 @@ export class DemoconditionComponent implements OnInit
 	{
 		this.onLoad_rootpane();
 	}
-	
-	onLoad_rootpane(){ 
-	} 
+
+	onLoad_rootpane(){
+	}
 	onClick_showData(eventData:any)
-	{ 
+	{
 		if(this.demomodel.gender ==  'male') {
 			let response: any;
 			this.statisticsService.male(this.demomodel.year).subscribe(
@@ -44,29 +44,17 @@ export class DemoconditionComponent implements OnInit
 			{
 				response = res;
 			},
-			(error: any) => 
+			(error: any) =>
 			{
 			},
-			() => 
+			() =>
 			{
 				this.showDataBindResponse_NkW(response);
 			});
 		}else if(this.demomodel.gender ==  'female') {
-			let response: any;
-			this.statisticsService.female(this.demomodel.year).subscribe(
-			(res: any) =>
-			{
-				response = res;
-			},
-			(error: any) => 
-			{
-			},
-			() => 
-			{
-				this.showDataBindResponse_zHK(response);
-			});
+
 		}
-		
+
 	}
 	private showDataBindResponse_NkW(response: any)
 	{
@@ -75,6 +63,6 @@ export class DemoconditionComponent implements OnInit
 	private showDataBindResponse_zHK(response: any)
 	{
 		this.gridData_Data=response.response;
-	} 
+	}
 }
 

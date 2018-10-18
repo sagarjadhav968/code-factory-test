@@ -1,7 +1,7 @@
 /**
  * Created by: Ketan Gote
  * Date: 17/10/2018
- * Organization: Individual	
+ * Organization: Individual
  */
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class TestformComponent implements OnInit
 	gender_Data:any;
 	genderData_Data:any;
 	successMsgData:any[]=[];
-	
+
 	constructor(private statisticsService: StatisticsService, private router: Router)
 	{
 		this.testform = new Testform();
@@ -32,11 +32,11 @@ export class TestformComponent implements OnInit
 	{
 		this.onLoad_rootpane();
 	}
-	
-	onLoad_rootpane(){ 
-	} 
+
+	onLoad_rootpane(){
+	}
 	onClick_showData(eventData:any)
-	{ 
+	{
 		if(this.testform.gender ==  'male') {
 			let response: any;
 			this.statisticsService.male(this.testform.year).subscribe(
@@ -44,29 +44,17 @@ export class TestformComponent implements OnInit
 			{
 				response = res;
 			},
-			(error: any) => 
+			(error: any) =>
 			{
 			},
-			() => 
+			() =>
 			{
 				this.showDataBindResponse_Xwn(response);
 			});
 		}else if(this.testform.gender ==  'female') {
-			let response: any;
-			this.statisticsService.female(this.testform.year).subscribe(
-			(res: any) =>
-			{
-				response = res;
-			},
-			(error: any) => 
-			{
-			},
-			() => 
-			{
-				this.showDataBindResponse_nfC(response);
-			});
+
 		}
-		
+
 	}
 	private showDataBindResponse_Xwn(response: any)
 	{
@@ -75,6 +63,6 @@ export class TestformComponent implements OnInit
 	private showDataBindResponse_nfC(response: any)
 	{
 		this.genderData_Data=response.response;
-	} 
+	}
 }
 

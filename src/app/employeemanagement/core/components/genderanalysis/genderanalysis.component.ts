@@ -1,7 +1,8 @@
+import { Stateradiobean } from './../../models/stateradiobean.model';
 /**
  * Created by: Ketan Gote
  * Date: 16/10/2018
- * Organization: Individual	
+ * Organization: Individual
  */
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,7 +20,7 @@ export class GenderanalysisComponent implements OnInit
 	gender_Data:any;
 	analysisinfo_Data:any;
 	successMsgData:any[]=[];
-	
+
 	constructor(private statisticsService: StatisticsService, private router: Router)
 	{
 		this.genderanalticsmodel = new Genderanalticsmodel();
@@ -30,47 +31,15 @@ export class GenderanalysisComponent implements OnInit
 	ngOnInit()
 	{
 	}
-	
+
 	onClick_getData(eventData:any)
-	{ 
-		if(this.genderanalticsmodel.gender ==  'male') {
-			let response: any;
-			this.statisticsService.male(this.genderanalticsmodel.year).subscribe(
-			(res: any) =>
-			{
-				response = res;
-			},
-			(error: any) => 
-			{
-			},
-			() => 
-			{
-				this.getDataBindResponse_Ylb(response);
-			});
-		}else {
-			let response: any;
-			this.statisticsService.female(this.genderanalticsmodel.year).subscribe(
-			(res: any) =>
-			{
-				response = res;
-			},
-			(error: any) => 
-			{
-			},
-			() => 
-			{
-				this.getDataBindResponse_pft(response);
-			});
-		}
-		
-	}
-	private getDataBindResponse_Ylb(response: any)
+	{
+    this.statisticsService.female(this.genderanalticsmodel.year, this.getDataBindResponse_pft.bind(this), () => {});
+  }
+
+  private	getDataBindResponse_pft(response: Stateradiobean)
 	{
 		this.analysisinfo_Data=response.response;
 	}
-	private getDataBindResponse_pft(response: any)
-	{
-		this.analysisinfo_Data=response.response;
-	} 
 }
 

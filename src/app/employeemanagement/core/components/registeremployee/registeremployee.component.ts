@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 import { StateService } from '../../services/state.service';
 import { Employee } from './../../models/employee.model'
+import {SERVICE_URL} from './../../services/service.constants';
 @Component(
 {
 	selector: 'registeremployee',
@@ -20,9 +21,10 @@ export class RegisteremployeeComponent implements OnInit
 	state_Data:any;
 	errorMsgData:any[]=[];
 	successMsgData:any[]=[];
-	
+	http=SERVICE_URL;
 	constructor(private employeeService: EmployeeService, private stateService: StateService, private router: Router)
 	{
+		
 		this.employee = new Employee();
 	    this.genderId_Data=[{"id":"1","name":"Male"},{"id":"2","name":"Female"}];
 		this.state_Data=[];
