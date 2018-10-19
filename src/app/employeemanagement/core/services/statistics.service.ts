@@ -16,7 +16,7 @@ export class StatisticsService extends HttpSubscriber {
 	}
 
 	public female(male: String, onSuccess: (data: Stateradiobean) => any, onFailure: (error: any) => any) {
-    this.subscribeData(this.httpClient.get<Stateradiobean>(SERVICE_URL.STATE_WISE + 'female/' + male),
+    this.subscribe(this.httpClient.get<Stateradiobean>(SERVICE_URL.STATE_WISE + 'female/' + male),
     onSuccess, onFailure);
   }
 
